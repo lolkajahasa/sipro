@@ -13,3 +13,10 @@ coverage/
 .DS_Store
 frontend/node_modules/.cache/default-development/2.pack
 frontend/node_modules/.cache/default-development/0.pack
+.env.*
+*.env
+credentials.json
+*.pem
+*.key
+.credentials
+frontend/node_modules/.cache/default-development/5.pack

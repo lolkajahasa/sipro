@@ -278,6 +278,29 @@ DEFAULT_PERMISSIONS = {
         "sales": ["view_own", "create"],
         "finance": ["view_all", "update", "approve"],
     },
+    # ---------------- Fase 39 (Fondasi Data V2) ----------------
+    # `settings` = Pusat Konfigurasi (aturan bisnis). Hanya super_admin/owner yang boleh
+    # MENGUBAH (keduanya FULL_ACCESS); peran lain boleh MELIHAT agar tahu aturan yang berlaku.
+    "settings": {
+        "sales_manager": ["view_all"], "marketing_admin": ["view_all"],
+        "finance": ["view_all"], "finance_manager": ["view_all"],
+        "project_manager": ["view_all"], "sales": ["view_all"], "site_engineer": ["view_all"],
+    },
+    # `catalog` = master tipe unit, spek tambahan (add-on), komponen biaya.
+    "catalog": {
+        "sales_manager": ["view_all", "create", "update"],
+        "marketing_admin": ["view_all"], "sales": ["view_all"],
+        "finance": ["view_all", "update"], "finance_manager": ["view_all", "update"],
+        "project_manager": ["view_all", "create", "update"], "site_engineer": ["view_all"],
+    },
+    # `doc_requirements` = master dokumen syarat per tahap/skema/mitra.
+    "doc_requirements": {
+        "sales_manager": ["view_all", "create", "update"],
+        "marketing_admin": ["view_all", "create", "update"],
+        "sales": ["view_all"], "finance": ["view_all", "update"],
+        "finance_manager": ["view_all", "update"], "project_manager": ["view_all"],
+        "site_engineer": ["view_all"],
+    },
 }
 
 

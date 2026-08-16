@@ -1,26 +1,34 @@
 [
   {
-    "content": "Copy repo files into /app (exclude .git, .env, .emergent, node_modules)",
-    "status": "completed"
+    "content": "Fase 39: SSOT baru (reference_p39) + settings registry (settings_store)",
+    "status": "in_progress"
   },
   {
-    "content": "Configure backend/.env (MONGO_URL, DB_NAME, JWT_SECRET, EMERGENT_LLM_KEY)",
-    "status": "completed"
+    "content": "Fase 39: masterplan (cluster/blok/unit) + catalog (tipe unit, add-on, komponen biaya)",
+    "status": "in_progress"
   },
   {
-    "content": "Install backend (pip) + frontend (yarn) dependencies",
-    "status": "completed"
+    "content": "Fase 39: master dokumen syarat + submission (doc_registry)",
+    "status": "pending"
   },
   {
-    "content": "Start services, verify seed completes and /api/health OK",
-    "status": "completed"
+    "content": "Fase 39: migrasi backfill cluster/blok + seed master (migrations_v2)",
+    "status": "pending"
   },
   {
-    "content": "Run repo gates (19/19 PASS) + testing_agent_v3 smoke test (0 bugs)",
-    "status": "completed"
+    "content": "Fase 39: router + wiring server.py + indexes + RBAC",
+    "status": "pending"
   },
   {
-    "content": "Update plan.md with restore log",
-    "status": "completed"
+    "content": "Fase 39: UI Pusat Konfigurasi + Struktur Proyek + Unit 360 + pola DataTable",
+    "status": "pending"
+  },
+  {
+    "content": "Fase 39: gate baru verify_masterplan.py + verify_settings.py (uji-mutasi)",
+    "status": "pending"
+  },
+  {
+    "content": "Fase 39: run_all_gates PASS + testing agent + tutup fase (plan.md)",
+    "status": "pending"
   }
 ]

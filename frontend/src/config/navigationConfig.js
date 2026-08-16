@@ -40,6 +40,9 @@ export const PAGE_META = {
   "/tax": { kicker: "Akuntansi", title: "Perpajakan (PPN/PPh/BPHTB)" },
   "/complaints": { kicker: "Layanan", title: "Komplain & CS" },
   "/documents": { kicker: "Dokumen", title: "Dokumen" },
+  "/config": { kicker: "Konfigurasi", title: "Pusat Konfigurasi" },
+  "/projects/:id": { kicker: "Proyek", title: "Struktur Proyek & Unit" },
+  "/units/:id": { kicker: "Proyek", title: "Unit 360" },
   "/admin/users": { kicker: "Admin", title: "Pengguna" },
   "/admin/permissions": { kicker: "Admin", title: "Hak Akses (RBAC)" },
   "/admin/organizations": { kicker: "Admin", title: "Organisasi (Tenant)" },
@@ -142,6 +145,13 @@ export const NAV_STRUCTURE = [
     type: "group", groupId: "docs", label: "Dokumen", roles: SALES_SIDE,
     items: [
       { id: "documents", label: "Dokumen", icon: FileText, path: "/documents", roles: SALES_SIDE },
+    ],
+  },
+  {
+    type: "group", groupId: "config", label: "Konfigurasi", roles: ADMIN_SIDE,
+    items: [
+      { id: "config-center", label: "Pusat Konfigurasi", icon: SlidersHorizontal,
+        path: "/config", roles: ADMIN_SIDE },
     ],
   },
   {

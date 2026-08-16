@@ -58,6 +58,18 @@ UNIQUE_INDEXES = [
     # Satu unit hanya boleh punya SATU jadwal aktif (mencegah progres ganda).
     ("build_schedules", [("org_id", 1), ("unit_id", 1)], "uq_build_schedule_unit"),
     ("build_items", [("org_id", 1), ("schedule_id", 1), ("step_code", 1)], "uq_build_item_step"),
+    # ---------------- Fase 39: hierarki proyek + master baru ----------------
+    ("clusters", [("org_id", 1), ("project_id", 1), ("code", 1)], "uq_cluster_code"),
+    ("blocks", [("org_id", 1), ("cluster_id", 1), ("code", 1)], "uq_block_code"),
+    ("unit_types", [("org_id", 1), ("code", 1)], "uq_unit_type_code"),
+    ("addon_items", [("org_id", 1), ("code", 1)], "uq_addon_code"),
+    ("price_components", [("org_id", 1), ("code", 1)], "uq_price_component_code"),
+    ("doc_requirements", [("org_id", 1), ("code", 1)], "uq_doc_requirement_code"),
+    # Satu setting = satu nilai per scope (org/project/cluster).
+    ("settings", [("org_id", 1), ("scope", 1), ("scope_id", 1), ("key", 1)], "uq_setting_scope"),
+    # Satu berkas hanya boleh diserahkan sekali untuk syarat & entitas yang sama.
+    ("doc_submissions", [("org_id", 1), ("entity_type", 1), ("entity_id", 1),
+                         ("requirement_code", 1), ("file_id", 1)], "uq_doc_submission"),
 ]
 
 # Natural key yang boleh kosong (partial index: hanya baris yang punya nilai dijaga).

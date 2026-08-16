@@ -610,3 +610,25 @@ Repo `github.com/oipowasa/Sipro` dipulihkan ke `/app` pada environment baru.
 - **Verifikasi**: `bash scripts/run_all_gates.sh` ⇒ **OVERALL: PASS (19 gates)**.
   `testing_agent_v3` iterasi 57 ⇒ backend 20/20, frontend (login + 9 rute utama) lolos, **0 bug**.
 - **Status**: aplikasi berjalan penuh di preview URL; tidak ada perubahan kode fungsional.
+
+---
+
+## 6) SIPRO V2 — Perbaikan Fondasi & Ekspansi CRM/BI (mulai 16 Agu 2026)
+Review menyeluruh owner (CRM + digital marketing + analytics/BI + proyek/unit + konstruksi) menghasilkan
+**spesifikasi V2 terpisah yang saling mereferensikan** di `docs/v2/` (17 dokumen, 1.927 baris, 0 link rusak).
+
+**Pintu masuk wajib:** `docs/v2/20_INDEX_V2.md` (keputusan owner D1–D13 + daftar pertanyaan terbuka OQ-1…OQ-11)
+lalu `docs/v2/36_PLAYBOOK_AGENT.md` (aturan kerja) dan `docs/v2/34_ROADMAP_EKSEKUSI.md` (Fase 39–51).
+
+**Temuan kritis yang harus diperbaiki (bukti di `docs/v2/21_AUDIT_KONDISI.md`):**
+- `CR-01` **S1** satu lead bisa mengunci banyak unit (`routers/deals_router.py:78` tanpa cek reservasi aktif per lead).
+- `CR-02/03` SPR hanya 1 klik, booking fee tanpa siklus verifikasi/hangus/refund (klausa `[DOC]` tidak dijalankan).
+- `CR-04` tahap `won` masih menunggu AJB → lead mandek di `booking` (bertentangan dengan keputusan owner D4).
+- `CR-05` tidak ada entitas **cluster/blok** (blok hanya hasil `code.split("-")`).
+- `CR-06/07` komponen biaya (BPHTB/notaris/bank/hook/kelebihan tanah/promo) & skema bayar belum jadi data.
+- `CR-14…CR-17` tidak ada BI (CAC, conversion per tahap, unit terjual kumulatif, realisasi RAB, target dinamis).
+
+**Aset baru:** 4 dokumen legal asli owner disimpan permanen di `docs/source_templates/`
+(SPR Cash, SPR Cash Bertahap, SPR KPR, SPKT) → menjadi acuan generator dokumen (`docs/v2/27_DOCGEN_SPEC.md`).
+
+**Status:** SPEC SELESAI, implementasi belum dimulai. Fase berikutnya = **Fase 39 Fondasi Data & Wiring**.

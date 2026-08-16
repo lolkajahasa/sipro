@@ -1,3 +1,7 @@
+> **⚠️ LANJUTAN V2 (16 Agu 2026):** review owner menghasilkan seri dokumen baru
+> **`docs/v2/20–36`** (CRM/BI/legal/pembayaran/proyek-unit + roadmap Fase 39–51).
+> **Baca `docs/v2/20_INDEX_V2.md` lebih dulu.** Bila V2 berbeda dengan dokumen 00–19 di sini, **V2 menang**.
+
 # SIPRO REBUILD — FRAMEWORK PENGEMBANGAN (baca ini dulu)
 
 > Satu **framework** yang saling mengunci: **WHY → WHAT → SPEC → HOW**. Bukan dokumen terpisah. Perintah owner: analisis mendalam & bersinergi; plan detail (implementasi + gambaran produk); **spesifikasi lengkap seluruh sistem**; **adopsi kode SIPROnext** untuk minimalisir kerugian.

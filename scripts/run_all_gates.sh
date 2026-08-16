@@ -23,6 +23,8 @@ GATES=(
   verify_35.py
   verify_36.py
   verify_37.py
+  verify_settings.py
+  verify_masterplan.py
 )
 
 fail=0

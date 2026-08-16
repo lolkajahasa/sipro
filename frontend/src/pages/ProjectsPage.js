@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { Building2, Plus, PackagePlus, Pencil, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -25,6 +26,7 @@ import ConfirmDialog from "@/components/patterns/ConfirmDialog";
 import { PROJECTS, PROJECT_EDIT } from "@/constants/testIds";
 
 export default function ProjectsPage() {
+  const navigate = useNavigate();
   const { user } = useAuth();
   const canManage = ["owner", "super_admin", "project_manager"].includes(user?.role);
   const [data, setData] = useState(null);
@@ -87,7 +89,19 @@ export default function ProjectsPage() {
                   <span className="rounded-full border bg-secondary px-2 py-0.5">{p.unit_total} unit</span>
                   <span className="rounded-full border px-2 py-0.5">Tersedia {p.unit_counts?.available ?? 0}</span>
                   <span className="rounded-full border px-2 py-0.5">Booked {p.unit_counts?.booked ?? 0}</span>
+                  <span className="rounded-full border bg-secondary px-2 py-0.5">
+                    {p.cluster_count ?? 0} cluster · {p.block_count ?? 0} blok
+                  </span>
                 </div>
+                {/* Fase 39: struktur proyek (cluster → blok → unit) dikelola di halaman
+                    kanonik `/projects/:id`, bukan lagi di drawer terbatas. */}
+                <span data-testid="project-open-structure"
+                  className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-primary"
+                  role="link" tabIndex={0}
+                  onClick={(e) => { e.stopPropagation(); navigate(`/projects/${p.id}`); }}
+                  onKeyDown={(e) => { if (e.key === "Enter") navigate(`/projects/${p.id}`); }}>
+                  Kelola struktur & unit →
+                </span>
               </button>
             ))}
           </div>

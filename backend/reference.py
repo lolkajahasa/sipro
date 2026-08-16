@@ -545,7 +545,7 @@ GROUPS: dict = {
 import importlib  # noqa: E402
 
 from reference_p28 import SYNONYMS_P28 as _SYN_P28  # noqa: E402
-_PHASES = (27, 28, 29, 31, 33, 34, 35, 36, 37)
+_PHASES = (27, 28, 29, 31, 33, 34, 35, 36, 37, 39)
 for _ph in _PHASES:
     GROUPS.update(getattr(importlib.import_module(f"reference_p{_ph}"), f"GROUPS_P{_ph}"))
 SYNONYMS: dict = {
@@ -614,9 +614,9 @@ SOURCE_TO_CHANNEL = {v: k for k, v in CHANNEL_TO_SOURCE.items()}
 SOURCE_SCORE = {
     "walk_in": 25, "meta_ads": 25, "google_lead": 25, "tiktok_ads": 22,
     "whatsapp": 20, "referral": 20, "website": 15, "manual": 10, "import": 10,
-    # Fase 28b — pengunjung showroom publik sudah melihat kavling & harga sebelum
-    # mengisi form, jadi niatnya lebih tinggi daripada form website umum.
-    "showroom_public": 24,
+    # Fase 28b showroom publik & Fase 39 kanal mitra/event/marketing inhouse (niatnya lebih
+    # tinggi daripada form website umum: sudah ada interaksi nyata sebelum data diisi).
+    "showroom_public": 24, "partner": 24, "event": 22, "inhouse_marketing": 23,
 }
 
 

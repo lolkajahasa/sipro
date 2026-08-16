@@ -46,3 +46,5 @@ export * from './opname';
 export * from './buildCalendar';
 // Fase 37 — Kalibrasi sekali klik durasi/waktu tunggu template jadwal
 export * from './buildCalibration';
+// Fase 39 — Pusat Konfigurasi + hierarki proyek/unit
+export * from './configCenter';

@@ -85,6 +85,10 @@ from routers.build_bulk_router import router as build_bulk_router
 from routers.build_calendar_router import router as build_calendar_router
 from routers.build_calibration_router import router as build_calibration_router
 from routers.spk_scope_router import router as spk_scope_router
+from routers.settings_router import router as settings_router
+from routers.masterplan_router import router as masterplan_router
+from routers.catalog_router import router as catalog_router
+from routers.docreq_router import router as docreq_router
 from storage import init_storage
 
 logging.basicConfig(level=logging.INFO,
@@ -139,6 +143,14 @@ async def lifespan(app: FastAPI):
     # dari data keterlambatan NYATA, jadi tidak ada seed yang boleh mengarang rekomendasi).
     import build_calibration as bcalib
     await bcalib.ensure_indexes()
+    # Fase 39: fondasi data V2 — master default (komponen biaya, add-on, dokumen syarat) +
+    # backfill cluster/blok/tipe unit + penautan shape site plan. Idempoten; tidak menyentuh
+    # jurnal keuangan. Detail: docs/v2/35_MIGRASI_DATA.md
+    import migrations_v2 as mig2
+    v2 = await mig2.run_v2_migrations(ORG_ID)
+    logger.info("Fondasi V2 siap: %s unit tertaut cluster/blok, %s tipe unit, %s shape peta.",
+                v2["M39_1_cluster_block"]["units_linked"],
+                v2["M39_2_unit_types"]["types_created"], v2["M39_4_siteplan"]["linked"])
     start_scheduler()
     yield
     stop_scheduler()
@@ -230,6 +242,12 @@ api.include_router(build_ops_router)
 api.include_router(build_bulk_router)
 api.include_router(build_calendar_router)
 api.include_router(build_calibration_router)
+# Fase 39 (Fondasi Data V2): Pusat Konfigurasi + hierarki proyek/cluster/blok/unit +
+# katalog master (tipe unit, spek tambahan, komponen biaya) + master dokumen syarat.
+api.include_router(settings_router)
+api.include_router(masterplan_router)
+api.include_router(catalog_router)
+api.include_router(docreq_router)
 app.include_router(api)
 
 app.add_middleware(

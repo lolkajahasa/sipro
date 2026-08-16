@@ -18,6 +18,9 @@ import DealsPage from "@/pages/DealsPage";
 import SitePlanPage from "@/pages/SitePlanPage";
 import DocumentsPage from "@/pages/DocumentsPage";
 import ProjectsPage from "@/pages/ProjectsPage";
+import ProjectDetailPage from "@/pages/ProjectDetailPage";
+import UnitDetailPage from "@/pages/UnitDetailPage";
+import ConfigCenterPage from "@/pages/ConfigCenterPage";
 import ConstructionPage from "@/pages/ConstructionPage";
 import BuildCalendarPage from "@/pages/BuildCalendarPage";
 import BuildCalibrationPage from "@/pages/BuildCalibrationPage";
@@ -98,6 +101,9 @@ export default function App() {
             <Route path="/customers" element={<CustomersPage />} />
             <Route path="/documents" element={<DocumentsPage />} />
             <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/projects/:id" element={<ProjectDetailPage />} />
+            <Route path="/units/:id" element={<UnitDetailPage />} />
+            <Route path="/config" element={<RequireAdmin><ConfigCenterPage /></RequireAdmin>} />
             <Route path="/construction" element={<ConstructionPage />} />
             <Route path="/build-calendar" element={<BuildCalendarPage />} />
             <Route path="/build-calibration" element={<BuildCalibrationPage />} />
