@@ -1,0 +1,26 @@
+[
+  {
+    "content": "Copy repo files into /app (exclude .git, .env, .emergent, node_modules)",
+    "status": "completed"
+  },
+  {
+    "content": "Configure backend/.env (MONGO_URL, DB_NAME, JWT_SECRET, EMERGENT_LLM_KEY)",
+    "status": "completed"
+  },
+  {
+    "content": "Install backend (pip) + frontend (yarn) dependencies",
+    "status": "completed"
+  },
+  {
+    "content": "Start services, verify seed completes and /api/health OK",
+    "status": "completed"
+  },
+  {
+    "content": "Run repo gates (19/19 PASS) + testing_agent_v3 smoke test (0 bugs)",
+    "status": "completed"
+  },
+  {
+    "content": "Update plan.md with restore log",
+    "status": "completed"
+  }
+]
